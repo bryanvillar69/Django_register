@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- TO CENTER INSIDE DIV -->
+<div class="col-md-6 offset-md-3">
+
+{% if user.is_authenticated %}
+<h1>WELCOME!</h1>
+
+{% else %}
+<h1>LOGIN PAGE</h1>
+<p>This page contains basic login details and switch accounts</p>
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <form>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="username" required>
+      </div>
+
+      <div class="mb-3">
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="password" required>
+      </div>
+
+      <button type="submit" class="btn btn-dark">Submit</button>
+        <br>
+        <br>
+        <p>Don't have an account? <a href="#">Register</a></p>
+
+    </form>
+</form>
+
+{% endif %}
+{% endblock %}
